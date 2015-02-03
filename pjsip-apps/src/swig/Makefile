@@ -4,7 +4,7 @@ ifneq ($(findstring android,$(TARGET_NAME)),)
   # no python for android
   DIRS = java
 else
-  DIRS = python java
+  DIRS = python java lua
 endif
 
 export SWIG_FLAGS=-I../../../../pjlib/include \
