@@ -13,7 +13,7 @@ in a nutshell:
 
 In the pjproject source directory, run the configure script with the options needed for your system:
 
-    # ./configure --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr CFLAGS='-O2 -DNDEBUG'
+    # ./configure --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr CFLAGS='-O2 -DNDEBUG -fPIC'
 
 A few recommended options are shown. That includes setting a couple important CFLAGS, -O2 for common optimizations and -DNDEBUG to disable debugging code and assertions.
 Build pjproject:
@@ -58,5 +58,11 @@ The SWIG modules for Python and Java are built by invoking make and make install
     # cd pjsip-apps/src/python
     # make
     # make install
+
+
+
+# lua and swig
+
+http://www.swig.org/Doc1.3/Lua.html#Lua_nn4
 
 
