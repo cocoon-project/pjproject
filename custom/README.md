@@ -42,3 +42,21 @@ Verify that pjproject has been installed in the target location by looking for, 
 	    libpjlib-util.so (libc6,x86-64) => /usr/lib/libpjlib-util.so
 	    libpj.so (libc6,x86-64) => /usr/lib/libpj.so
 
+
+
+
+# Building Python and Java SWIG Modules
+The SWIG modules for Python and Java are built by invoking make and make install manually from pjsip-apps/src/swig directory. The make install will install the Python SWIG module to user’s site-packages directory.
+
+    # cd pjsip-apps/src/swig
+    # make
+    # make install
+
+
+# build old pjsua app
+
+    # cd pjsip-apps/src/python
+    # make
+    # make install
+
+
