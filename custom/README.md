@@ -12,6 +12,7 @@ in a nutshell:
     # cd pjproject
 
 In the pjproject source directory, run the configure script with the options needed for your system:
+
     # ./configure --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr CFLAGS='-O2 -DNDEBUG'
 
 A few recommended options are shown. That includes setting a couple important CFLAGS, -O2 for common optimizations and -DNDEBUG to disable debugging code and assertions.
