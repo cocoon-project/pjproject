@@ -1,0 +1,48 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# extras
+*.depend
+*/bin/*
+
+
+#python
+pjsip-apps/src/python/dist
+pjsip-apps/src/python/build
+
+# xcode
+*.plist
+*.xcscheme
+
+
+# customs
+pjsip/src/pjsua-lib/pjsua_call_new.c
+pjsip/src/pjsua-lib/pjsua_call_origin.c
+./config.log
