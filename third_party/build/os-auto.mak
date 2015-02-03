@@ -23,7 +23,7 @@ ifneq (,1)
 DIRS += g7221
 endif
 
-ifneq ($(findstring pa,pa_darwinos),)
+ifneq ($(findstring pa,null),)
 ifeq (0,1)
 # External PA
 else
@@ -37,6 +37,6 @@ else
 DIRS += srtp
 endif
 
-ifeq (libresample,libresample)
+ifeq (none,libresample)
 DIRS += resample
 endif

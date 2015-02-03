@@ -22,10 +22,10 @@ Build pjproject:
     # make
 Install pjproject
 
-    # make install
+    # sudo make install
 
 Update shared library links.
-    # ldconfig
+    # sudo ldconfig
 
 Verify that pjproject has been installed in the target location by looking for, and finding the various pjproject modules:
 
@@ -66,3 +66,23 @@ The SWIG modules for Python and Java are built by invoking make and make install
 http://www.swig.org/Doc1.3/Lua.html#Lua_nn4
 
 
+# notes
+
+    python/pjsua make and swig/python dont not work with
+
+    # ./configure --prefix=/usr --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr CFLAGS='-O2 -DNDEBUG -fPIC'
+
+
+error:
+
+    >>> import pjsua2
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "pjsua2.py", line 28, in <module>
+        _pjsua2 = swig_import_helper()
+      File "pjsua2.py", line 24, in swig_import_helper
+        _mod = imp.load_module('_pjsua2', fp, pathname, description)
+    ImportError: dlopen(./_pjsua2.so, 2): Symbol not found: _pjmedia_format_get_video_format_detail
+      Referenced from: /usr/local/lib/libpjmedia.dylib.2
+      Expected in: flat namespace
+     in /usr/local/lib/libpjmedia.dylib.2

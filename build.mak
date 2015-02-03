@@ -12,7 +12,7 @@ export CROSS_COMPILE :=
 export LINUX_POLL := select 
 export SHLIB_SUFFIX := dylib
 
-export prefix := /usr/local
+export prefix := /usr
 export exec_prefix := ${prefix}
 export includedir := ${prefix}/include
 export libdir := ${exec_prefix}/lib
@@ -41,7 +41,7 @@ APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libsrtp.$(SHLIB_SUFFIX).$
 endif
 endif
 
-ifeq (libresample,libresample)
+ifeq (none,libresample)
 APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libresample-$(LIB_SUFFIX)
 ifeq ($(PJ_SHARED_LIBRARIES),)
 ifeq (,1)
@@ -106,7 +106,7 @@ APP_THIRD_PARTY_LIB_FILES += $(PJ_DIR)/third_party/lib/libg7221codec.$(SHLIB_SUF
 endif
 endif
 
-ifneq ($(findstring pa,pa_darwinos),)
+ifneq ($(findstring pa,null),)
 ifeq (0,1)
 # External PA
 APP_THIRD_PARTY_EXT += -lportaudio
@@ -134,8 +134,8 @@ SDL_CFLAGS =
 SDL_LDFLAGS = 
 
 # FFMPEG flags
-FFMPEG_CFLAGS =  -DPJMEDIA_HAS_LIBAVFORMAT=1 -DPJMEDIA_HAS_LIBAVCODEC=1 -DPJMEDIA_HAS_LIBSWSCALE=1 -DPJMEDIA_HAS_LIBAVUTIL=1 -I/usr/local/Cellar/ffmpeg/1.2/include  
-FFMPEG_LDFLAGS =   -L/usr/local/Cellar/ffmpeg/1.2/lib -lavformat -lavcodec -lswscale -lavutil 
+FFMPEG_CFLAGS =  
+FFMPEG_LDFLAGS =  
 
 # Video4Linux2
 V4L2_CFLAGS = 
@@ -146,8 +146,8 @@ OPENH264_CFLAGS =
 OPENH264_LDFLAGS =  
 
 # QT
-AC_PJMEDIA_VIDEO_HAS_QT = yes
-QT_CFLAGS = -DPJMEDIA_VIDEO_DEV_HAS_QT=1
+AC_PJMEDIA_VIDEO_HAS_QT = 
+QT_CFLAGS = 
 
 # iOS
 IOS_CFLAGS = 
@@ -166,7 +166,7 @@ PJ_VIDEO_LDFLAGS += $(SDL_LDFLAGS) $(FFMPEG_LDFLAGS) $(V4L2_LDFLAGS) \
 export APP_CC := gcc
 export APP_CXX := g++
 export APP_CFLAGS := -DPJ_AUTOCONF=1\
-	-O2 -DPJ_IS_BIG_ENDIAN=0 -DPJ_IS_LITTLE_ENDIAN=1 -fPIC\
+	-O2 -DNDEBUG -fPIC -DPJ_IS_BIG_ENDIAN=0 -DPJ_IS_LITTLE_ENDIAN=1 -fPIC\
 	$(PJ_VIDEO_CFLAGS) \
 	-I$(PJDIR)/pjlib/include\
 	-I$(PJDIR)/pjlib-util/include\
@@ -260,7 +260,7 @@ export APP_LDLIBS := $(PJSUA_LIB_LDLIB) \
 	$(APP_THIRD_PARTY_LIBS)\
 	$(APP_THIRD_PARTY_EXT)\
 	$(PJLIB_LDLIB) \
-	-lm -lpthread  -framework CoreAudio -framework CoreServices -framework AudioUnit -framework AudioToolbox -framework Foundation -framework AppKit -framework QTKit -framework QuartzCore -framework OpenGL  -L/usr/local/Cellar/ffmpeg/1.2/lib -lavformat -lavcodec -lswscale -lavutil  -lcrypto -lssl
+	-lm -lpthread  -framework Foundation -framework AppKit -lcrypto -lssl
 export APP_LDXXLIBS := $(PJSUA2_LIB_LDLIB) \
 	-lstdc++ \
 	$(APP_LDLIBS)
@@ -280,9 +280,9 @@ export PJ_LIBXX_FILES := $(APP_LIBXX_FILES)
 
 # And here are the variables to use if application is using the
 # library from the install location (i.e. --prefix)
-export PJ_INSTALL_DIR := /usr/local
+export PJ_INSTALL_DIR := /usr
 export PJ_INSTALL_INC_DIR := ${prefix}/include
 export PJ_INSTALL_LIB_DIR := ${exec_prefix}/lib
-export PJ_INSTALL_CFLAGS := -I$(PJ_INSTALL_INC_DIR) -DPJ_AUTOCONF=1	-O2 -DPJ_IS_BIG_ENDIAN=0 -DPJ_IS_LITTLE_ENDIAN=1 -fPIC
+export PJ_INSTALL_CFLAGS := -I$(PJ_INSTALL_INC_DIR) -DPJ_AUTOCONF=1	-O2 -DNDEBUG -fPIC -DPJ_IS_BIG_ENDIAN=0 -DPJ_IS_LITTLE_ENDIAN=1 -fPIC
 export PJ_INSTALL_CXXFLAGS := $(PJ_INSTALL_CFLAGS)
 export PJ_INSTALL_LDFLAGS := -L$(PJ_INSTALL_LIB_DIR) $(APP_LDLIBS)

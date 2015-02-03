@@ -24,7 +24,7 @@ export TEST_OBJS +=	main.o
 # Additional LDFLAGS for pjlib-test
 #
 # Disabled, as this causes duplicated LDFLAGS, which may raise linking errors
-#export TEST_LDFLAGS +=  -lm -lpthread  -framework CoreAudio -framework CoreServices -framework AudioUnit -framework AudioToolbox -framework Foundation -framework AppKit -framework QTKit -framework QuartzCore -framework OpenGL  -L/usr/local/Cellar/ffmpeg/1.2/lib -lavformat -lavcodec -lswscale -lavutil  -lcrypto -lssl
+#export TEST_LDFLAGS +=  -lm -lpthread  -framework Foundation -framework AppKit -lcrypto -lssl
 
 #
 # TARGETS are make targets in the Makefile, to be executed for this given
